@@ -45,8 +45,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/private/admin/**").hasRole("ADMIN") // Dostęp tylko dla roli ADMIN
                 .requestMatchers("/api/private/users/**").hasAnyRole("USER", "ADMIN") // Dostęp dla USER i ADMIN
                 .anyRequest().authenticated() //* Wymaganie logowania dla wszystkich innych zasobów
-            ).httpBasic(withDefaults());
-           /*.formLogin(form -> form
+            ).httpBasic(withDefaults()); //* Podstawowe okno logowania
+           /*.formLogin(form -> form //* Formularz logowania generowany przez Springa lub własny
              .permitAll() // Publiczny dostęp do logowania
         )
              .logout(logout -> logout

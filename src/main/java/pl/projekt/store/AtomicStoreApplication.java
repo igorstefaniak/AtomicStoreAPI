@@ -16,20 +16,22 @@ public class AtomicStoreApplication {
 
     private PostgreSQLContainer<?> postgresContainer;
 
+    @SuppressWarnings("resource")
     @Bean
 	@ServiceConnection
 	@RestartScope
     public PostgreSQLContainer<?> postgresContainer() {
         DockerImageName customImage = DockerImageName.parse("zajacp/postgresql-pl:15.3")
-                                                    .asCompatibleSubstituteFor("postgres");
-        try (@SuppressWarnings("resource")
-        PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>(customImage)
+                .asCompatibleSubstituteFor("postgres");
+    
+        PostgreSQLContainer<?> container = new PostgreSQLContainer<>(customImage)
                 .withDatabaseName("atomic_store")
-                .withEnv("POSTGRES_INITDB_ARGS", "--encoding=UTF-8 --lc-collate=pl_PL.UTF-8 --lc-ctype=pl_PL.UTF-8")) {
-            postgresContainer.start(); 
-            return postgresContainer;
-        }
+                .withEnv("POSTGRES_INITDB_ARGS", "--encoding=UTF-8 --lc-collate=pl_PL.UTF-8 --lc-ctype=pl_PL.UTF-8");
+    
+        container.start();
+        return container;
     }
+    
 
     @PreDestroy
     public void stopContainer() {

@@ -1,4 +1,4 @@
-# Dokumentacja Atomic Store 
+# Dokumentacja Atomic Store API
 #### _API zintegrowane z bazą danych_
 
 ## Wprowadzenie

@@ -470,6 +470,6 @@ Automatyczne uruchamianie i zamykanie kontenera PostgreSQL.
 
 ## API
 
-Do uruchomienia aplikacji AtomicStoreAPI ptrzebne są wcześniej opisane programy (Java (17), Docker(zajacp/postgresql-pl:15.3)). Do uruchomienia programu używamy komendy `.\mvnw.cmd spring-boot:run` w głównym folderze projektu (w miejscu gdzie znajduje się plik mvnw.cmd dla Windowsa lub mvnw dla Linuxa). Domyślnym adresem jest `http://localhost:8080/swagger-ui/index.html`. W prawym górnym rogu znajdują się wcześniej wspomniane definicje (Select a definition). Aby uruchomić zastrzeżone metody hasłem i nazwą użytkownika:, możemy użyć poświadczeń dla roli:
+Do uruchomienia aplikacji AtomicStoreAPI ptrzebne są wcześniej opisane programy (Java (17), Docker(zajacp/postgresql-pl:15.3)). Do uruchomienia programu używamy komendy `.\mvnw.cmd spring-boot:run` w głównym folderze projektu (w miejscu gdzie znajduje się plik mvnw.cmd dla Windowsa lub mvnw dla Linuxa). Domyślnym adresem jest `http://localhost:8080/swagger-ui/index.html`. W prawym górnym rogu znajdują się wcześniej wspomniane definicje (Select a definition). Aby uruchomić zastrzeżone metody hasłem i nazwą użytkownika, możemy użyć poświadczeń dla roli:
 - USER: Nazwa użytkownika: **`user`**, Hasło: **`a`**
 - ADMIN: Nazwa użytkownika: **`admin`**, Hasło: **`a`**

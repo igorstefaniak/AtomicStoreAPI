@@ -2,7 +2,7 @@
 #### _API zintegrowane z bazą danych_
 
 ## Wprowadzenie
-Celem projektu jest udostępnienie end-pointów umożliwiających łatwą i efektywną interakcję z bazą danych, eliminując potrzebę pisania skomplikowanych zapytań SQL. Atomic Store API zapewnia wydajną warstwę komunikacji, która upraszcza procesy tworzenia, odczytu, aktualizacji i usuwania danych (CRUD) w nowoczesnych aplikacjach. Ścieżki API zostały zabezpieczone, poprzez autoryzację nazwą użytkownika i hasłem oraz istnieje obsługa polskich znaków diakretycznych. Projekt używa oprogramowania Docker do konteneryzacji, aby ułatwić przebudowę, wdrożenie i uruchamianie aplikacji zatem isstnieje przykładowy schemat bazy danych oraz przykładowe dane w projekcie (kolejno /main/resources/schema.sql i /main/resources/data.sql).
+Celem projektu jest udostępnienie end-pointów umożliwiających łatwą i efektywną interakcję z bazą danych, eliminując potrzebę pisania skomplikowanych zapytań SQL. Atomic Store API zapewnia wydajną warstwę komunikacji, która upraszcza procesy tworzenia, odczytu, aktualizacji i usuwania danych (CRUD) w nowoczesnych aplikacjach. Ścieżki API zostały zabezpieczone, poprzez autoryzację nazwą użytkownika i hasłem oraz istnieje obsługa polskich znaków diakrytycznych. Projekt używa oprogramowania Docker do konteneryzacji, aby ułatwić przebudowę, wdrożenie i uruchamianie aplikacji zatem istnieje przykładowy schemat bazy danych oraz przykładowe dane w projekcie (kolejno /main/resources/schema.sql i /main/resources/data.sql).
 
 ## Konstrukcja i struktura aplikacji
 W projekcie użyto następujących składników, programów i języków programowania:
@@ -80,7 +80,7 @@ W zakomentowanej części kodu znajdują się alternatywne implementacje dla tes
 Plik zawiera zestaw endpointów dla operacji administracyjnych dotyczących produktów, zamówień i użytkowników. Wszystkie endpointy wymagają odpowiednich uprawnień i logowania. Działania są obsługiwane przez serwisy (UsersService, ProductsService, OrdersService), które implementują logikę biznesową. Opis poszczególnych endpointów znajduje się w dziale **Metody HTTP**.
 
 ### /store/controller/PrivateUserController.java
-Plik PrivateUserController to kontroler REST API w aplikacji Spring, dedykowany do obsługi użytkowników i operacji dostępnych dla nich po zalogowaniu. W tym przypadku, kontroler zawiera jedno endpoint, który zwraca listę wszystkich produktów dostępnych w sklepie.
+Plik PrivateUserController to kontroler REST API w aplikacji Spring, dedykowany do obsługi użytkowników i operacji dostępnych dla nich po zalogowaniu. W tym przypadku, kontroler zawiera jeden endpoint, który zwraca listę wszystkich produktów dostępnych w sklepie.
 
 ### /store/controller/PublicController.java
 Plik PublicController to kontroler REST API obsługujący publiczne endpointy aplikacji. W tym przypadku zawiera jedną metodę, która umożliwia logowanie użytkownika. Endpoint nie wymaga wcześniejszego zalogowania, ale weryfikuje dane logowania użytkownika.

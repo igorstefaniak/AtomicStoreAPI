@@ -469,29 +469,30 @@ public ResponseEntity<Map<String, Object>> deleteOrder(@PathVariable Long orderI
                                 ),
                                 examples = @ExampleObject(
                                         name = "Przykładowa odpowiedź sukcesu",
-                                        value = "[\n"
-                                        + "  {\n"
-                                        + "    \"orderId\": 1,\n"
-                                        + "    \"userId\": 1,\n"
-                                        + "    \"totalPrice\": 1350,\n"
-                                        + "    \"status\": \"completed\",\n"
-                                        + "    \"createdAt\": \"2025-01-06T16:30:18.78537\"\n"
-                                        + "  },\n"
-                                        + "  {\n"
-                                        + "    \"orderId\": 2,\n"
-                                        + "    \"userId\": 2,\n"
-                                        + "    \"totalPrice\": 800,\n"
-                                        + "    \"status\": \"pending\",\n"
-                                        + "    \"createdAt\": \"2025-01-06T16:30:18.78537\"\n"
-                                        + "  },\n"
-                                        + "  {\n"
-                                        + "    \"orderId\": 3,\n"
-                                        + "    \"userId\": 3,\n"
-                                        + "    \"totalPrice\": 150,\n"
-                                        + "    \"status\": \"shipped\",\n"
-                                        + "    \"createdAt\": \"2025-01-06T16:30:18.78537\"\n"
-                                        + "  }\n"
-                                        + "]"
+                                        value = """
+                                                [
+                                                  {
+                                                    "orderId": 1,
+                                                    "userId": 1,
+                                                    "totalPrice": 1350,
+                                                    "status": "completed",
+                                                    "createdAt": "2025-01-06T16:30:18.78537"
+                                                  },
+                                                  {
+                                                    "orderId": 2,
+                                                    "userId": 2,
+                                                    "totalPrice": 800,
+                                                    "status": "pending",
+                                                    "createdAt": "2025-01-06T16:30:18.78537"
+                                                  },
+                                                  {
+                                                    "orderId": 3,
+                                                    "userId": 3,
+                                                    "totalPrice": 150,
+                                                    "status": "shipped",
+                                                    "createdAt": "2025-01-06T16:30:18.78537"
+                                                  }
+                                                ]"""
                                 )
                         )
                 ),
@@ -533,13 +534,14 @@ public ResponseEntity<Map<String, Object>> deleteOrder(@PathVariable Long orderI
                         content = @Content(
                                 mediaType = "application/json",
                                 schema = @Schema(
-                                        example = "{\n"
-                                        + "  \"orderId\": 3,\n"
-                                        + "  \"userId\": 3,\n"
-                                        + "  \"totalPrice\": 150,\n"
-                                        + "  \"status\": \"shipped\",\n"
-                                        + "  \"createdAt\": \"2025-01-06T16:37:28.954511\"\n"
-                                        + "}"
+                                        example = """
+                                                  {
+                                                    "orderId": 3,
+                                                    "userId": 3,
+                                                    "totalPrice": 150,
+                                                    "status": "shipped",
+                                                    "createdAt": "2025-01-06T16:37:28.954511"
+                                                  }"""
                                 )
                         )
                 ),

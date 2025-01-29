@@ -43,17 +43,18 @@ public class PrivateUserController {
                      ),
                      examples = @ExampleObject(
                              name = "Przykładowa odpowiedź sukcesu",
-                             value = "[\n"
-                             + "    {\n"
-                             + "    \"productId\": 1,\n"
-                             + "    \"name\": \"Nuka-Cola\",\n"
-                             + "    \"description\": \"Klasyczny napój gazowany, który podbił serca mieszkańców przedwojennej Ameryki. Wyjątkowy smak łączy orzeźwiającą słodycz z nutą tajemnicy.\",\n"
-                             + "    \"image\": \"https://static.wikia.nocookie.net/fallout/images/1/10/Fallout4_Nuka_Cola.png\",\n"
-                             + "    \"price\": 1200,\n"
-                             + "    \"stock\": 35,\n"
-                             + "    \"createdAt\": \"2025-01-05T22:14:58.673294\"\n"
-                             + "     }\n" 
-                             + "]"
+                             value = """
+                                     [
+                                         {
+                                         "productId": 1,
+                                         "name": "Nuka-Cola",
+                                         "description": "Klasyczny nap\u00f3j gazowany, kt\u00f3ry podbi\u0142 serca mieszka\u0144c\u00f3w przedwojennej Ameryki. Wyj\u0105tkowy smak \u0142\u0105czy orze\u017awiaj\u0105c\u0105 s\u0142odycz z nut\u0105 tajemnicy.",
+                                         "image": "https://static.wikia.nocookie.net/fallout/images/1/10/Fallout4_Nuka_Cola.png",
+                                         "price": 1200,
+                                         "stock": 35,
+                                         "createdAt": "2025-01-05T22:14:58.673294"
+                                          }
+                                     ]"""
                      )
                  )
              ),

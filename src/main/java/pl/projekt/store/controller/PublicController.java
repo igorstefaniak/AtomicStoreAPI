@@ -58,7 +58,6 @@ public class PublicController {
                                                     "userId": 1,
                                                     "username": "admin",
                                                     "email": "admin@example.com",
-                                                    "password": "zaszyfrowane_has\u0142o",
                                                     "role": "ADMIN",
                                                     "createdAt": "2025-01-05T22:04:24.707688"
                                                   },

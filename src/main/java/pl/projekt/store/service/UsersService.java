@@ -12,7 +12,6 @@ import pl.projekt.store.repository.UsersRepository;
 
 @Service
 public class UsersService {
-
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
 

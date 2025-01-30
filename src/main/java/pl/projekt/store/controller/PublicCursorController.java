@@ -29,22 +29,22 @@ public class PublicCursorController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-@Tag(name = "Publiczne metody (używające kursora)", description = "(niewymagające logowania)")
-@Operation(
-    summary = "Pobierz dane z bazy za pomocą kursora",
-    description = "Zwraca listę rekordów z bazy danych przy użyciu kursora.",
-    responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Lista produktów",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(
-                    type = "array"
-                ),
-                examples = @ExampleObject(
-                    name = "Przykładowa odpowiedź sukcesu",
-                    value = """
+    @Tag(name = "Publiczne metody (używające kursora)", description = "(niewymagające logowania)")
+    @Operation(
+            summary = "Pobierz dane z bazy za pomocą kursora",
+            description = "Zwraca listę rekordów z bazy danych przy użyciu kursora.",
+            responses = {
+                @ApiResponse(
+                        responseCode = "200",
+                        description = "Lista produktów",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(
+                                        type = "array"
+                                ),
+                                examples = @ExampleObject(
+                                        name = "Przykładowa odpowiedź sukcesu",
+                                        value = """
                             [
                                 {
                                     "productId": 1,
@@ -63,52 +63,60 @@ public class PublicCursorController {
                                     "price": 1500,
                                     "stock": 20,
                                     "createdAt": "2025-01-05T22:15:00.673294"
+                                },
+                                {
+                                    "productId": 3,
+                                    "name": "Quantum Nuka-Cola",
+                                    "description": "Limitowana edycja Nuka-Coli z dodatkiem radioaktywnego blasku. Zwiększa energię i podnosi morale!",
+                                    "image": "https://static.wikia.nocookie.net/fallout/images/9/9e/Fallout4_Nuka_Cola_Quantum?.png",
+                                    "price": 2500,
+                                    "stock": 10,
+                                    "createdAt": "2025-01-06T10:30:15.123456"
                                 }
                             ]"""
-                )
-            )
-        ),
-        @ApiResponse(
-            responseCode = "500",
-            description = "Błąd serwera",
-            content = @Content(
-                mediaType = "application/json",
-                examples = @ExampleObject(
-                    name = "Przykładowa odpowiedź błędu",
-                    value = """
+                                )
+                        )
+                ),
+                @ApiResponse(
+                        responseCode = "500",
+                        description = "Błąd serwera",
+                        content = @Content(
+                                mediaType = "application/json",
+                                examples = @ExampleObject(
+                                        name = "Przykładowa odpowiedź błędu",
+                                        value = """
                             {
                                 "error": "B\u0142\u0105d podczas przetwarzania kursora: szczeg\u00f3\u0142y b\u0142\u0119du"
                             }"""
+                                )
+                        )
                 )
-            )
-        )
-    }
-)
-@GetMapping("/cursor/products")
-public List<Map<String, Object>> getDataWithCursor() {
-    List<Map<String, Object>> result = new ArrayList<>();
-
-    jdbcTemplate.execute((Connection connection) -> {
-        try (Statement statement = connection.createStatement()) {
-
-            ResultSet resultSet = statement.executeQuery("SELECT product_id, name, price FROM Products");
-
-            // iterowanie po wynikach za pomocą kursora
-            while (resultSet.next()) {
-                Map<String, Object> row = new LinkedHashMap<>(); // zachowuje kolejność dodawania elementów
-                row.put("productId", resultSet.getInt("product_id"));
-                row.put("name", resultSet.getString("name"));
-                row.put("price", resultSet.getBigDecimal("price"));
-                result.add(row);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Błąd podczas przetwarzania kursora: " + e.getMessage());
-        }
-        return null;
-    });
+    )
+    @GetMapping("/cursor/products")
+    public List<Map<String, Object>> getDataWithCursor() {
+        List<Map<String, Object>> result = new ArrayList<>();
 
-    return result;
-}
+        jdbcTemplate.execute((Connection connection) -> {
+            try (Statement statement = connection.createStatement()) {
 
+                ResultSet resultSet = statement.executeQuery("SELECT product_id, name, price FROM Products");
+
+                // iterowanie po wynikach za pomocą kursora
+                while (resultSet.next()) {
+                    Map<String, Object> row = new LinkedHashMap<>(); // zachowuje kolejność dodawania elementów
+                    row.put("productId", resultSet.getInt("product_id"));
+                    row.put("name", resultSet.getString("name"));
+                    row.put("price", resultSet.getBigDecimal("price"));
+                    result.add(row);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException("Błąd podczas przetwarzania kursora: " + e.getMessage());
+            }
+            return null;
+        });
+
+        return result;
+    }
 
 }

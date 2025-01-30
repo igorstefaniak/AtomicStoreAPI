@@ -6,7 +6,6 @@ import org.springframework.boot.devtools.restart.RestartScope;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.utility.DockerImageName;
 
 import jakarta.annotation.PreDestroy;
 
@@ -21,15 +20,10 @@ public class AtomicStoreApplication {
 	@ServiceConnection
 	@RestartScope
     public PostgreSQLContainer<?> postgresContainer() {
-        DockerImageName customImage = DockerImageName.parse("zajacp/postgresql-pl:15.3")
-                .asCompatibleSubstituteFor("postgres");
-    
-        PostgreSQLContainer<?> container = new PostgreSQLContainer<>(customImage)
+        return new PostgreSQLContainer<>("zajacp/postgresql-pl:15.3")
                 .withDatabaseName("atomic_store")
-                .withEnv("POSTGRES_INITDB_ARGS", "--encoding=UTF-8 --lc-collate=pl_PL.UTF-8 --lc-ctype=pl_PL.UTF-8");
-    
-        container.start();
-        return container;
+                .withEnv("POSTGRES_INITDB_ARGS", "--encoding=UTF-8 --lc-collate=pl_PL.UTF-8 --lc-ctype=pl_PL.UTF-8")
+                /* .withReuse(true) */; //* fajna metoda zeby uzyć jeszcze raz kontenera                                                                                                                                                                                                                                                                                                                                                                                                                                       kainafetsrogi
     }
     
 

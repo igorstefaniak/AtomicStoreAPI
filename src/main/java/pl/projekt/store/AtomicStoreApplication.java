@@ -26,7 +26,6 @@ public class AtomicStoreApplication {
                 /* .withReuse(true) */; //* fajna metoda zeby uzyć jeszcze raz kontenera                                                                                                                                                                                                                                                                                                                                                                                                                                       kainafetsrogi
     }
     
-
     @PreDestroy
     public void stopContainer() {
         if (postgresContainer != null) {

@@ -1,4 +1,4 @@
-# Dokumentacja Atomic Store API
+# Dokumentacja Atomic Store API (Java/PostgreSQL/Swagger/Spring Boot)
 #### _API zintegrowane z bazą danych_
 
 ## Wprowadzenie

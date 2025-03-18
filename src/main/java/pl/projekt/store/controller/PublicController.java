@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +35,6 @@ public class PublicController {
         this.usersService = usersService;
     }
 
-    
     @Tag(name = "Publiczne metody - użytkownicy", description = "(niewymagające logowania)")
     @Operation(
             summary = "Logowanie użytkownika",
@@ -76,19 +75,20 @@ public class PublicController {
                                         value = """
                                                 {
                                                   "status": "error",
-                                                  "message": "Nieprawid\u0142owa nazwa u\u017cytkownika lub has\u0142o."
+                                                  "message": "Nieprawidłowa nazwa użytkownika lub hasło."
                                                 }"""
                                 )
                         )
                 )
             }
     )
-    @GetMapping("/user/login")
-    public ResponseEntity<Map<String, Object>> loginUser(
-            @RequestParam String username,
-            @RequestParam String password) {
+    @PostMapping(value = "/user/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<String, Object>> loginUser(@RequestBody LoginRequest loginRequest) {
         Map<String, Object> response = new HashMap<>();
         try {
+            String username = loginRequest.getUsername();
+            String password = loginRequest.getPassword();
+
             Users user = usersService.findUserByUsername(username)
                     .orElseThrow(() -> new RuntimeException("Nieprawidłowa nazwa użytkownika."));
 
@@ -113,8 +113,13 @@ public class PublicController {
     }
 
     @Data
-    public class ResponseSuccess {
+    public static class LoginRequest {
+        private String username;
+        private String password;
+    }
 
+    @Data
+    public class ResponseSuccess {
         private String status;
         private String message;
         private Object user;
@@ -122,9 +127,7 @@ public class PublicController {
 
     @Data
     public class ResponseError {
-
         private String status;
         private String message;
     }
-
 }

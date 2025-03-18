@@ -7,6 +7,7 @@ INSERT INTO Products (name, description, image, price, stock) VALUES
 ('Nuka-Cola Quantum', 'Legendarny napój z lśniącą, niebieską poświatą. Quantum to wyższa liga Nuka-Coli, wzbogacona o radioaktywną energię, która błyskawicznie regeneruje zdrowie i dodaje mocy.', 'https://static.wikia.nocookie.net/fallout/images/9/9d/FO3_Nuka-Cola_Quantum.png', 2500.00, 3),
 ('Rosół z makaronem', 'Domowy smak w apokaliptycznym świecie. Gorący, aromatyczny rosół z mięsem i miękkim makaronem to doskonały posiłek dla wędrowca. Nie tylko rozgrzewa i regeneruje zdrowie, ale także przywodzi na myśl lepsze czasy sprzed Wielkiej Wojny.', 'https://static.wikia.nocookie.net/fallout/images/d/db/Vegetable_soup.png', 150.00, 5),                                                                                                                                                             -- kainafetsrogi
 ('Sunset Sarsaparilla', 'Jeden z najpopularniejszych napojów na Pustkowiach Mojave. Sunset jest o 126 lat starsza od Nuka-Coli przez co smak jest znany każdemu mieszkańcowi pustkowi!', 'https://static.wikia.nocookie.net/fallout/images/1/1b/Sunset_bottle.png', 1000.00, 3);
+
 INSERT INTO Orders (user_id, total_price, status) VALUES
 (1, 1350.00, 'COMPLETED'),
 (2, 800.00, 'PENDING'),
